@@ -55,7 +55,7 @@ namespace SaveUp
         /// <param name="Id">Id des Produktes was gelöscht werden los</param>
         public static void DeleteOneProductData(Guid Id)
         {
-            RestClient clientDelete = new RestClient("https://Localhost:7193/api/DataManagment/" + Id.ToString());
+            RestClient clientDelete = new RestClient("https://10.0.2.2:7193/api/DataManagment/" + Id.ToString());
 
             var DeleteAllRequest = new RestRequest();
 
