@@ -1,0 +1,39 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SaveUp"
+             x:Class="SaveUp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Style für übeschrifft-->
+            <Style TargetType="Label" 
+                   x:Key="header">
+                <Setter Property="HorizontalOptions"
+                        Value="Center"/>
+                <Setter Property="FontSize"
+                        Value="30" />
+                <Setter Property="Margin"
+                        Value="10" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="FontFamily"
+                        Value="string" />
+            </Style>
+            <!--style für buttons-->
+            <Style TargetType="Button">
+                <Setter Property="Margin"
+                        Value="10" />
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

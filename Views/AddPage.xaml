@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SaveUp.AddPage"
+             xmlns:viewModels="clr-namespace:SaveUp.ViewModels"
+             Title="SaveUp">
+    <ContentPage.BindingContext>
+        <viewModels:AddViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Margin"
+                        Value="15,5,0,0"/>
+                <Setter Property="FontSize"
+                        Value="15" />
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+            </Style>
+            <!--Style Textbox-->
+            <Style TargetType="Entry">
+                <Setter Property="Margin"
+                        Value="10,0,10,0"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <!--übeschrifft-->
+        <Label Text="Hinzufügen"
+               Style="{StaticResource header}"/>
+        
+        <!--Preis-->
+        <Label Text="Preis"/>
+        <Entry Text="{Binding PriceEntry}"/>
+        
+        <!--Beschreibung-->
+        <Label Text="Beschreibung"/>
+        <Entry MaximumHeightRequest="50"
+               Text="{Binding DescriptionEntry}"/>
+        
+        <!--Hinzufügen Button-->
+        <Button Text="Hinzufügen"
+                Command="{Binding PostCommand}"
+                ImageSource="icon_add.png" />
+
+    </VerticalStackLayout>
+</ContentPage>

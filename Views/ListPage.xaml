@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:SaveUp.ViewModels"
+             x:Class="SaveUp.ListPage"
+             Title="SaveUp">
+    <ContentPage.BindingContext>
+        <viewModels:ListViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Style Produkt Liste-->
+            <Style TargetType="ListView">
+                <Setter Property="Margin"
+                        Value="10,0,10,0" />
+                <Setter Property="MaximumHeightRequest"
+                        Value="400" />
+                <Setter Property="Background"
+                        Value="WhiteSmoke" />
+            </Style>
+            <!--Style Total gespart-->
+            <Style TargetType="Label"
+                   x:Key="Total">
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="HorizontalOptions"
+                        Value="Center" />
+            </Style>
+            <Style TargetType="Button"
+                   x:Key="BtnDelete">
+                <Setter Property="ImageSource"
+                        Value="icon_delete.png"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout>
+        <!--überschrifft-->
+        <Label Text="Liste"
+               Style="{StaticResource header}"/>
+        
+        <!--Produkt Liste-->
+        <ListView ItemsSource="{Binding ProductList, Mode=TwoWay}"
+                  x:Name="list"
+                  SelectedItem="{Binding ProductSelected}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding description, Mode=TwoWay}"
+                              TextColor="Black"
+                              Detail="{Binding price, StringFormat='CHF {0:F2}', Mode=TwoWay}"
+                              DetailColor="LightSlateGray"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
+        <!--Buttons (Löschen, Hinzufügen)-->
+        <HorizontalStackLayout HorizontalOptions="Center"
+                               Margin="0,0,5,0">
+            <Button Text="Löschen"
+                    Command="{Binding DeleteOneCommand}"
+                    Style="{StaticResource BtnDelete}"/>
+            <Button Text="Alle Löschen"
+                    Command="{Binding DeleteAllCommand}"
+                    Style="{StaticResource BtnDelete}"/>
+        </HorizontalStackLayout>
+        
+        <!--Total gespart-->
+        <Label Text="Total Gespart"
+               Style="{StaticResource Total}"
+               FontAttributes="Bold"
+               FontSize="Large"
+               Margin="0,15,0,0"/>
+        <Label Text="{Binding TotalPriceText}"
+               Style="{StaticResource Total}"
+               FontAttributes="Italic"/>
+    </VerticalStackLayout>
+</ContentPage>
